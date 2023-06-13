@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
-    public float velocity = 5f;
-    public Rigidbody2D rb;
+    [SerializeField] private float velocity = 5f;
+    [SerializeField] private Rigidbody2D rb;
     Vector2 movement;
     Vector2 mousePos;
-    public Camera cam;
+    [SerializeField] private Camera cam;
 
 
 

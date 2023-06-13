@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public float bulletSpeed = 20f;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletSpeed = 20f;
     private MovementPlayer movementPlayer;
-    public Transform player;
+    [SerializeField] private Transform player;
 
 
 
