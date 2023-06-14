@@ -9,18 +9,21 @@ public class MovementPlayer : MonoBehaviour
     Vector2 movement;
     Vector2 mousePos;
     [SerializeField] private Camera cam;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private HealthBar healthBar;
 
 
-
+    private void Start()
+    {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+    }
     void Update()
     {
-
-
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition); 
-
-      
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
       
     }
     private void FixedUpdate()
@@ -29,5 +32,16 @@ public class MovementPlayer : MonoBehaviour
         Vector2 lookDirection = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
+    }
+
+
+   public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

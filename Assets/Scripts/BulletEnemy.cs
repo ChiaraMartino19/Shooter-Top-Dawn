@@ -16,7 +16,4 @@ public class BulletEnemy : MonoBehaviour
         Destroy(this.gameObject, 2f);
     }
 
-
-   
-    
 }
